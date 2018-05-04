@@ -12,50 +12,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
     <script type="text/babel">
 
-      class Album extends React.Component {
-        constructor(props){
-          super(props);
-        } 
-
-
+      class Cell extends React.Component {
         render() {
-          let listStickers = Array.from(Array(700).keys()).map(
-            (num) => ({team: 'Panini',
-                      sticker: num,
-                      repeated: false})
-          );
-          let rows = [];
-          for(let i = 0; i < listStickers.length; i++){
-            let sticker = listStickers[i];
-            let row = (
-              <tr>
-              <td>{ sticker.team }</td>
-              <td>{ sticker.sticker }</td>
-              <td>{ sticker.repeated }</td>
-              </tr> 
-            );
-            
-            rows.push(row);
-          }
-          
+          var listStickers = Array.from(Array(700).keys());
 
           return (
             <div>
               <h2>Album Panini Table</h2>
               <p>All the stickers</p>
+              { listStickers }
               <p>Current Date: {this.props.date.toLocaleDateString()}</p>
-              <table id="simple-board">
-              <thead>
-              <tr>
-              <th>Team</th>
-              <th>Sticker</th>
-              <th>Repeated</th>
-              </tr>
-              </thead>
-               <tbody>
-                 {rows}
-               </tbody>
-             </table>
             </div>
           );
         }
@@ -67,7 +33,7 @@
 
 
       ReactDOM.render(
-        <Album
+        <Cell
           date={info.date}/>,document.getElementById('app')
       );
 
